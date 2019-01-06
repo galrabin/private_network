@@ -1,9 +1,11 @@
+# docker run --privileged --name druid -v /sys/fs/cgroup:/sys/fs/cgroup:ro -P -d  galrabin/druid:1.0
+# 685140850::MXhJSUXAIQTiTEUIAkAKQBk1R9whcGTChLBbzEIRhjWItBNxNKjZMkHwbkQ2AInSblY1SACkQgEKWjpLANM0MYRIwCF+A0wVkHI0ADYZNRDAIXC2TIUKGlCGAxo1aDAicDSEkTAJZkqFAjiI0hBENEgeOkHhQJoXA4DStHNESMCdQwEMGJUhAuA0GSdF
+
 version: '3'
 services:
   druid-core:
-    image: druid:1.2
+    image: galrabin/druid:1.0
     ports:
-     - "22:22"
      - "80:80"
      - "8088:8088"
      - "1947:1947"
@@ -13,3 +15,6 @@ services:
      - "5060:5060"
      - "5063:5063"
      - "4005:4005"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
